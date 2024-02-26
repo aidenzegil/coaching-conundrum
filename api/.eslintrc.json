@@ -1,0 +1,91 @@
+{
+  "env": {
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "./config/eslint/ts.eslintrc.json",
+    "./config/eslint/style.eslintrc.json"
+  ],
+  "ignorePatterns": ["*.test.ts", "*mock*", "*dist*"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "project": "./tsconfig.json",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "simple-import-sort",
+    "sort-keys-fix",
+    "unused-imports"
+  ],
+  "root": true,
+  "rules": {
+    "array-bracket-spacing": [
+      "warn",
+      "never",
+      {
+        "arraysInArrays": false,
+        "objectsInArrays": false
+      }
+    ],
+    "arrow-parens": ["warn", "always"],
+    "arrow-spacing": ["warn"],
+    "block-spacing": "warn",
+    "brace-style": "warn",
+    "comma-dangle": ["warn", "always-multiline"],
+    "comma-spacing": "warn",
+    "eol-last": "warn",
+    // "indent": [
+    //   "warn",
+    //   2,
+    //   {
+    //     "SwitchCase": 1,
+    //     "offsetTernaryExpressions": true
+    //   }
+    // ],
+    // "linebreak-style": ["warn", "unix"],
+    // "lines-between-class-members": "warn",
+    "no-await-in-loop": "warn",
+    "no-case-declarations": "off",
+    "no-constant-condition": "warn",
+    "no-duplicate-case": "warn",
+    "no-empty-pattern": "warn",
+    "no-extra-boolean-cast": "warn",
+    "no-extra-parens": "warn",
+    "no-extra-semi": "warn",
+    "no-inner-declarations": "warn",
+    "no-multi-spaces": "warn",
+    "no-prototype-builtins": "warn",
+    "no-self-assign": "warn",
+    "no-trailing-spaces": "warn",
+    "no-unneeded-ternary": "warn",
+    "no-unreachable": "warn",
+    "no-unsafe-optional-chaining": "warn",
+    "no-unused-expressions": "warn",
+    // Note: you must disable the base rule as it can report incorrect errors
+    "no-unused-vars": "off",
+    "no-useless-catch": "warn",
+    "no-useless-escape": "warn",
+    "no-var": "warn",
+    "object-curly-spacing": ["warn", "always"],
+    "prefer-const": "warn",
+    "quotes": ["warn", "double"],
+    "semi": ["warn", "always"],
+    "simple-import-sort/imports": "warn",
+    "sort-keys": "warn",
+    "sort-keys-fix/sort-keys-fix": "warn",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "args": "after-used",
+        "argsIgnorePattern": "^_",
+        "vars": "all",
+        "varsIgnorePattern": "^_"
+      }
+    ]
+  }
+}

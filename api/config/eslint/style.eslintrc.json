@@ -1,0 +1,25 @@
+{
+  "plugins": ["@stylistic/js", "@stylistic/ts"],
+  "rules": {
+    "@stylistic/js/indent": [
+      "warn",
+      2,
+      {
+        "FunctionDeclaration": { "parameters": "first" },
+        "FunctionExpression": { "parameters": "first" },
+        "SwitchCase": 1,
+        "offsetTernaryExpressions": true
+      }
+    ],
+    "@stylistic/js/linebreak-style": ["warn", "unix"],
+    "@stylistic/ts/lines-between-class-members": [
+      "warn",
+      {
+        "enforce": [
+          { "blankLine": "always", "prev": "*", "next": "*" },
+          { "blankLine": "never", "prev": "*", "next": "field" }
+        ]
+      }
+    ]
+  }
+}

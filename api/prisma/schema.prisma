@@ -1,0 +1,72 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+enum UserType {
+  COACH
+  STUDENT
+}
+
+model User {
+  // metadata
+  id                String          @id @default(nanoid()) @unique
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @default(now()) @updatedAt
+  // fields
+  phoneNumber       String
+  userType          UserType        // If we needed something more complicated here, would would make these different tables
+
+
+  // relation
+  createdBlocks UserBlock[]    @relation(name: "creatingUser")
+  bookedBlocks  UserBlock[]    @relation(name: "bookingUser")
+}
+
+model Block {
+  // metadata
+  id                String          @id @default(nanoid()) @unique
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @default(now()) @updatedAt
+  // fields
+  startTime         DateTime
+  endTime           DateTime        
+  rating            Int? 
+  notes             String?
+
+  // relation 
+  userBlock        UserBlock?
+}
+
+model UserBlock {
+  // metadata
+  id                String          @id @default(nanoid()) @unique
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @default(now()) @updatedAt
+  // fields
+  creatingUserId    String
+  bookingUserId     String?  
+  blockId           String          @unique
+  // relations
+  creatingUser      User            @relation(name: "creatingUser",fields: [creatingUserId], references: [id])
+  bookingUser       User?           @relation(name: "bookingUser",fields: [bookingUserId], references: [id])
+  block             Block           @relation(fields: [blockId], references: [id])
+}
+
+
+
+// User (Coach + Student)
+
+// Block (Time Slot)
+
+// UserBlock (User + Block)
+// - PersonWhoseCalendarThisIsOn
+// - PersonWhoIsBookingThisTimeSlot
+

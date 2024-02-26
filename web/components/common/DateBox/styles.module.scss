@@ -1,0 +1,29 @@
+.available {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #000;
+  border-radius: 8px;
+  & > span {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  p {
+    margin: 0;
+  }
+  .selected {
+    background-color: #000;
+    color: #fff;
+  }
+}
+
+.created {
+  @extend .available;
+}
+
+.booked {
+  @extend .available;
+}
