@@ -81,8 +81,17 @@ Install node modules
 Launch locally
 
 ```bash
-    $ npm run dev
+    $ npm run start
 ```
+
+Troubleshooting:
+If the previous step gives you trouble, run
+
+```bash
+    $ npm run build
+```
+
+and try again.
 
 # Demoing
 
