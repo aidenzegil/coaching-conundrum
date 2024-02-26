@@ -1,5 +1,5 @@
-import WebError from "@/app/common/errors/WebError";
-import { Result } from "@/app/common/types/result";
+import WebError from "../../../common/errors/WebError";
+import { Result } from "../../../common/types/result";
 
 export type ApiResponse<T> = Promise<Result<T, WebError>>;
 

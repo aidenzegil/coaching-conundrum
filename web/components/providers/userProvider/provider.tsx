@@ -48,6 +48,9 @@ export const UserContextProvider = ({
       // fetch user by id
       try {
         const user = await userController({}).getUser({ id: userId });
+        if (user.isErr()) {
+          return console.error(user.error);
+        }
         setUser(user.value);
       } catch (error) {
         console.error(error);

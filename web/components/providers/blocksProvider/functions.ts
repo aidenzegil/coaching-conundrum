@@ -17,18 +17,30 @@ export const useBlocksProviderFunctions = (
   const refreshOpenBlocks = async () => {
     stateController.setLoading.setOpenBlocksLoading(true);
     const openBlocks = await network.getOpenBlocks();
+    if (openBlocks.isErr()) {
+      stateController.setLoading.setOpenBlocksLoading(false);
+      return;
+    }
     stateController.set.setOpenBlocks(openBlocks.value);
     stateController.setLoading.setOpenBlocksLoading(false);
   };
   const refreshCreatedBlocks = async (userId: string) => {
     stateController.setLoading.setCreatedBlocksLoading(true);
     const createdBlocks = await network.getBlocksCreatedByUser({ userId });
+    if (createdBlocks.isErr()) {
+      stateController.setLoading.setCreatedBlocksLoading(false);
+      return;
+    }
     stateController.set.setCreatedBlocks(createdBlocks.value);
     stateController.setLoading.setCreatedBlocksLoading(false);
   };
   const refreshBookedBlocks = async (userId: string) => {
     stateController.setLoading.setBookedBlocksLoading(true);
     const bookedBlocks = await network.getBlocksBookedByUser({ userId });
+    if (bookedBlocks.isErr()) {
+      stateController.setLoading.setBookedBlocksLoading(false);
+      return;
+    }
     stateController.set.setBookedBlocks(bookedBlocks.value);
     stateController.setLoading.setBookedBlocksLoading(false);
   };

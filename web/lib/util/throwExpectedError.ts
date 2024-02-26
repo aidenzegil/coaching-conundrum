@@ -1,4 +1,4 @@
-import WebError from "@/app/common/errors/WebError";
+import WebError from "../../common/errors/WebError";
 import { deepLog } from "./deepLog";
 import { environment } from "./environment";
 
