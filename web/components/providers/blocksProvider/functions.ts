@@ -1,5 +1,3 @@
-import { auth } from "@/app/lib/firebase/config";
-
 import { useEffect } from "react";
 import { network } from "./network";
 import { BlockProviderFunctions, BlockProviderStateController } from "./types";
